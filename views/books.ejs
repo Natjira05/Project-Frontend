@@ -1,0 +1,99 @@
+<!--books.ejs-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MUSIC ALBUM</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    
+  </head>
+  <body>
+    <h1>MUSIC ALBUM</h1>
+    <table>
+      <tr>
+        <th>Music Format</th>
+        <th>Music Name</th>
+        <th>Composer Name</th>
+        <th>View</th>
+      </tr>
+      <% for(var i = 0 ; i < books.length; i++) { %>
+      <tr>
+        <td><%= books[i].format %></td>
+        <td><%= books[i].name %></td>
+        <td><%= books[i].composer %></td>
+        <td>
+          <a href="/book/<%= books[i].id %>" >View</a>
+        </td>
+      </tr>
+    <% } %>
+    </table>
+<br>
+<br>
+    <center>
+    <a href="/create" ><font face ="Open Sans" size="4" color="red">Create New Music Album</font></a>
+    </center>
+
+    <br>
+<br>
+
+<center>
+<h1><font face ="Open Sans"  color="#8B4513">MUSIC FORMAT</font></h1>
+    <table>
+      <tr>
+        <th>ID_Format</th>
+        <th>Music Format</th>
+        <th>Edit</th>
+      </tr>
+      <% for(var i = 0 ; i < formats.length; i++) { %>
+      <tr>
+        <td><%= formats[i].title %></td>
+        <td><%= formats[i].author %></td>
+        <td>
+          <a href="/update/<%= formats[i].id %>" >Edit</a>
+        </td>
+      </tr>
+    <% } %>
+    </table>
+</center>
+<br>
+<br>
+    <center>
+    <a href="/create" ><font face ="Open Sans" size="4" color="red">Create New Music Format</font></a>
+    </center>
+
+    <br>
+<br>
+<br>
+<center>
+  <h1><font face ="Open Sans"  color="#000000">MUSIC NAME</font></h1>
+      <table>
+        <tr>
+          <th>ID_Music</th>
+          <th>Music Name</th>
+          <th>Edit</th>
+        </tr>
+        <% for(var i = 0 ; i < music.length; i++) { %>
+        <tr>
+          <td><%= music[i].title %></td>
+          <td><%= music[i].author %></td>
+          <td>
+            <a href="/update/<%= formats[i].id %>" >Edit</a>
+          </td>
+        </tr>
+      <% } %>
+      </table>
+  </center>
+  <br>
+  <br>
+    <center>
+    <a href="/create" ><font face ="Open Sans" size="4" color="red">Create New Music Name</font></a>
+    </center>
+
+    <br>
+    
+
+
+
+
+
+  </body>
+</html>

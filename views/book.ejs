@@ -1,0 +1,24 @@
+<!-- view -->
+<!-- book.ejs -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MUSIC ALBUM</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    
+  </head>
+  <body>
+    <h1>MUSIC ALBUM</h1>
+    <center>
+    <p>Music Format : <%= book.format %></p>
+    <p>Music Name : <%= book.name %></p>
+    <p>Composer Name : <%= book.composer %></p>
+    <br>
+    <br>
+    <br>
+    <a href="/update/<%= book.id %>" >Edit</a>
+    <a href="/delete/<%= book.id %>" >Delete</a>
+    <a href="/" >Back to List</a>
+  </center>
+  </body>
+</html>

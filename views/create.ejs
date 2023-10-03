@@ -1,0 +1,37 @@
+<!--create.ejs-->
+<!DOCTYPE html >
+<html>
+  <head>
+    <title>CREATE MUSIC ALBUM</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    
+  </head>
+  <body>
+    <h1>CREATE MUSIC ALBUM</h1>
+    <form method="post"  action="/create">
+      <br>
+      <br>
+      <label for="format">Music Format : </label>
+      <input type="text" id="format" name="format">
+      <br>
+
+      <br>
+      <label for="name">Music Name : </label>
+      <input type="text" id="name" name="name">
+      <br>
+
+      <br>
+      <label for="composer">Composer Name : </label>
+      <input type="text" id="composer" name="composer">
+      <br>
+
+      <br>
+      <center><input type="submit" value="Create"></center>
+    </form>
+    <br>
+    <br>
+    <center>
+    <a href="/">Back to List</a>
+    </center>
+  </body>
+</html>
