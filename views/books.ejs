@@ -76,7 +76,7 @@
           <td><%= music[i].title %></td>
           <td><%= music[i].author %></td>
           <td>
-            <a href="/update/<%= formats[i].id %>" >Edit</a>
+            <a href="/update/<%= music[i].id %>" >Edit</a>
           </td>
         </tr>
       <% } %>
@@ -89,7 +89,34 @@
     </center>
 
     <br>
-    
+    <br>
+<br>
+<center>
+  <h1><font face ="Open Sans"  color="#000000">COMPOSER NAME</font></h1>
+      <table>
+        <tr>
+          <th>ID_Composer</th>
+          <th>Composer Name</th>
+          <th>Edit</th>
+        </tr>
+        <% for(var i = 0 ; i < composer.length; i++) { %>
+        <tr>
+          <td><%= composer[i].title %></td>
+          <td><%= composer[i].author %></td>
+          <td>
+            <a href="/update/<%= composer[i].id %>" >Edit</a>
+          </td>
+        </tr>
+      <% } %>
+      </table>
+  </center>
+  <br>
+  <br>
+    <center>
+    <a href="/create" ><font face ="Open Sans" size="4" color="red">Create New Composer Name</font></a>
+    </center>
+
+    <br>
 
 
 

@@ -28,7 +28,8 @@ app.get("/", async (req, res) => {
     const response = await axios.get(base_url + '/books');
     const response_ft = await axios.get(base_url + '/formats');
     const response_ms = await axios.get(base_url + '/music');
-    res.render("books", { books: response.data, formats: response_ft.data, music: response_ms.data });
+    const response_cm = await axios.get(base_url + '/composer');
+    res.render("books", { books: response.data, formats: response_ft.data, music: response_ms.data, composer: response_cm.data});
   } catch (err) {
     console.error(err);
     res.status(500).send('Error');
@@ -40,7 +41,8 @@ app.get("/book/:id", async (req, res) => {
     const response = await axios.get(base_url + '/books/' + req.params.id);
     const response_ft = await axios.get(base_url + '/formats'  + req.params.id);
     const response_ms = await axios.get(base_url + '/music'  + req.params.id);
-    res.render("book", { book: response.data, formats: response_ft.data, music: response_ms.data});
+    const response_cm = await axios.get(base_url + '/composer'  + req.params.id);
+    res.render("book", { book: response.data, formats: response_ft.data, music: response_ms.data, composer: response_cm.data});
   } catch (err) {
     console.error(err);
     res.status(500).send('Error');
@@ -55,8 +57,15 @@ app.post("/create", async (req, res) => {
   try {
     const data = { format: req.body.format, name: req.body.name, composer: req.body.composer};
     await axios.post(base_url + '/books', data);
-    // const data1 = { title: req.body.title, author: req.body.author };
-    // await axios.post(base_url + '/formats', data1);
+
+    const data_fr = { title: req.body.title, author: req.body.author} ;
+    await axios.put(base_url + '/formats/' + req.params.id, data_fr) ;
+
+    const data_ms= { title: req.body.title, author: req.body.author} ;
+    await axios.put(base_url + '/music/' + req.params.id, data_ms) ;
+    
+    const data_cm= { title: req.body.title, author: req.body.author} ;
+    await axios.put(base_url + '/composer/' + req.params.id, data_cm) ;
     res.redirect("/");
   } catch (err) {
     console.error(err);
@@ -69,7 +78,8 @@ app.get("/update/:id", async ( req, res) => {
     const response = await axios.get(base_url + '/books/' + req.params.id);
     const response_fr = await axios.get(base_url + '/formats/' + req.params.id);
     const response_ms = await axios.get(base_url + '/music/' + req.params.id);
-      res.render("update", {book: response.data, formats: response_fr.data, music: response_ms.data});
+    const response_cm = await axios.get(base_url + '/composer/' + req.params.id);
+      res.render("update", {book: response.data, formats: response_fr.data, music: response_ms.data, composer: response_cm.data});
   } catch (err) {
     console.error(err);
     res.status(500).send('Error');
@@ -84,6 +94,8 @@ app.post("/update/:id", async (req, res) => {
     await axios.put(base_url + '/formats/' + req.params.id, data_fr) ;
     const data_ms= { title: req.body.title, author: req.body.author} ;
     await axios.put(base_url + '/music/' + req.params.id, data_ms) ;
+    const data_cm= { title: req.body.title, author: req.body.author} ;
+    await axios.put(base_url + '/composer/' + req.params.id, data_cm) ;
     res.redirect("/");
   } catch (err) {
     console.error(err);
@@ -94,7 +106,9 @@ app.post("/update/:id", async (req, res) => {
 app.get("/delete/:id", async (req, res) => {
   try {
     await axios.delete(base_url + '/books/' + req.params.id);
-    // await axios.delete(base_url + '/formats/' + req.params.id);
+    await axios.delete(base_url + '/formats/' + req.params.id);
+    await axios.delete(base_url + '/music/' + req.params.id);
+    await axios.delete(base_url + '/composer/' + req.params.id);
       res.redirect("/");
   } catch (err) {
     console.error(err);

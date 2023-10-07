@@ -1,4 +1,4 @@
-
+<!-- edit -->
 <!-- update.ejs -->
 <!DOCTYPE html>
 <html>
@@ -9,20 +9,20 @@
   </head>
   <body>
     <h1>UPDATE MUSIC ALBUM</h1>
-    <form  method="post" action="/update/<%= book.id%>">
+    <form  method="post" action="/update/<%= books.id%>">
       <br>
     <label for="format">Music Format : </label>
-    <input type="text" name="format" id="format" value="<%= book.format %>">
+    <input type="text" name="format" id="format" value="<%= books.format %>">
     <br>
 
     <br>
     <label for="name">Music Name : </label>
-    <input type="text" id="name" name="name" value="<%= book.name %>">
+    <input type="text" id="name" name="name" value="<%= books.name %>">
     <br>
 
     <br>
     <label for="composer">Composer Name : </label>
-    <input type="text" id="composer" name="composer" value="<%= book.composer %>">
+    <input type="text" id="composer" name="composer" value="<%= books.composer %>">
     <br>
 
     <br>
@@ -34,7 +34,7 @@
 <br>
  
 <h1><font face ="Open Sans"  color="#006400">UPDATE MUSIC FORMAT</font></h1>
-    <form  method="post" action="/update/<%= book.id%>">
+    <form  method="post" action="/update/<%= books.id%>">
       <br>
     <label for="title">Music Format : </label>
     <input type="text" name="title" id="title" value="<%= formats.title %>">
@@ -54,8 +54,8 @@
 <br>
 <br>
   <center>
-  <a href="/book/<%= book.id %>">View</a>
-  <a href="/delete/<%= book.id %>">Delete</a>
+  <a href="/book/<%= books.id %>">View</a>
+  <a href="/delete/<%= books.id %>">Delete</a>
   <a href="/">Back to List</a>
   </center>
   </body>
