@@ -39,9 +39,9 @@ app.get("/", async (req, res) => {
 app.get("/book/:id", async (req, res) => {
   try {
     const response = await axios.get(base_url + '/books/' + req.params.id);
-    const response_ft = await axios.get(base_url + '/formats'  + req.params.id);
-    const response_ms = await axios.get(base_url + '/music'  + req.params.id);
-    const response_cm = await axios.get(base_url + '/composer'  + req.params.id);
+    const response_ft = await axios.get(base_url + '/formats/'  + req.params.id);
+    const response_ms = await axios.get(base_url + '/music/'  + req.params.id);
+    const response_cm = await axios.get(base_url + '/composer/'  + req.params.id);
     res.render("book", { book: response.data, formats: response_ft.data, music: response_ms.data, composer: response_cm.data});
   } catch (err) {
     console.error(err);
@@ -59,13 +59,13 @@ app.post("/create", async (req, res) => {
     await axios.post(base_url + '/books', data);
 
     const data_fr = { title: req.body.title, author: req.body.author} ;
-    await axios.put(base_url + '/formats/' + req.params.id, data_fr) ;
+    await axios.put(base_url + '/formats' + req.params.id, data_fr) ;
 
     const data_ms= { title: req.body.title, author: req.body.author} ;
-    await axios.put(base_url + '/music/' + req.params.id, data_ms) ;
-    
+    await axios.put(base_url + '/music' + req.params.id, data_ms) ;
+
     const data_cm= { title: req.body.title, author: req.body.author} ;
-    await axios.put(base_url + '/composer/' + req.params.id, data_cm) ;
+    await axios.put(base_url + '/composer' + req.params.id, data_cm) ;
     res.redirect("/");
   } catch (err) {
     console.error(err);
@@ -90,12 +90,16 @@ app.post("/update/:id", async (req, res) => {
   try {
     const data = { format: req.body.format, name: req.body.name, composer: req.body.composer} ;
     await axios.put(base_url + '/books/' + req.params.id, data) ;
+
     const data_fr = { title: req.body.title, author: req.body.author} ;
     await axios.put(base_url + '/formats/' + req.params.id, data_fr) ;
+
     const data_ms= { title: req.body.title, author: req.body.author} ;
     await axios.put(base_url + '/music/' + req.params.id, data_ms) ;
+
     const data_cm= { title: req.body.title, author: req.body.author} ;
     await axios.put(base_url + '/composer/' + req.params.id, data_cm) ;
+
     res.redirect("/");
   } catch (err) {
     console.error(err);
